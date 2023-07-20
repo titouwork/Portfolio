@@ -1,11 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Home
+{% endblock %}
 
 {% block body %}
-    <div class="pink-stripe">
-        <h1>
-            Let's start coding&nbsp;&#129304;
-        </h1>
-    </div>
-{% endblock %}
+	<section class="qui-suis-je" aria-label="Qui-suis-je" id="qui-suis-je">
+		<h1 class="text-center bg-secondary text-primary m-auto p-1">
+			Qui-suis-je
+		</h1>
+
+		{% for object in content %}
+			<div class="information">
+				<img class="w-25" src="{{ asset(object.photo) }}" alt="Photo">
+				<p class="text-primary bg-secondary">{{ object.information }}</P>
+			</div>
+			<div class="content">
+				<p class="text-primary bg-secondary">{{ object.content }}</P>
+			</div>
+		{% endfor %}
+	{% endblock %}
