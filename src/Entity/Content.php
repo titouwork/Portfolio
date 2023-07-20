@@ -15,7 +15,7 @@ class Content
     private ?int $id = null;
 
     #[ORM\Column(type: Types::STRING, nullable: true)]
-    private $photo = null;
+    private ?string $photo = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $information = null;
@@ -33,7 +33,7 @@ class Content
         return $this->photo;
     }
 
-    public function setPhoto($photo): self
+    public function setPhoto(string $photo): self
     {
         $this->photo = $photo;
 
