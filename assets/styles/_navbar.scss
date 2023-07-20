@@ -1,0 +1,20 @@
+.navbar{
+    -webkit-transform:skew(35deg);
+    margin-left: 2rem;
+    padding-top: 0;
+}
+.nav-item {
+    padding: 0.5rem;
+    background-color: transparent;
+    border: solid;
+    border-color: transparent  transparent transparent $primary;
+    min-height: 1rem;
+
+}
+ul li a {
+    -webkit-transform: skew(-35deg)
+}
+.navbar-toggler-icon{
+    -webkit-transform: skew(-35deg);
+    background-color: $primary;
+}
