@@ -18,7 +18,6 @@ class ContentFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        // Utilisez l'objet $this->twig pour charger le contenu du template Twig
         $contentTemplate = $this->twig->render('fixtures/content_template.html.twig');
 
         $content = new Content();
