@@ -19,11 +19,11 @@ class Tags
     private ?string $language = null;
 
     #[ORM\ManyToMany(targetEntity: Projects::class, inversedBy: 'tags')]
-    private Collection $projects_tags;
+    private Collection $projectsTags;
 
     public function __construct()
     {
-        $this->projects_tags = new ArrayCollection();
+        $this->projectsTags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -48,13 +48,13 @@ class Tags
      */
     public function getProjectsTags(): Collection
     {
-        return $this->projects_tags;
+        return $this->projectsTags;
     }
 
     public function addProjectsTag(Projects $projectsTag): self
     {
-        if (!$this->projects_tags->contains($projectsTag)) {
-            $this->projects_tags->add($projectsTag);
+        if (!$this->projectsTags->contains($projectsTag)) {
+            $this->projectsTags->add($projectsTag);
         }
 
         return $this;
@@ -62,7 +62,7 @@ class Tags
 
     public function removeProjectsTag(Projects $projectsTag): self
     {
-        $this->projects_tags->removeElement($projectsTag);
+        $this->projectsTags->removeElement($projectsTag);
 
         return $this;
     }

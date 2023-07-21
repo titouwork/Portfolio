@@ -26,11 +26,11 @@ class ProjectsFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::PROJECTS as list($v1, $v2, $v3)) {
+        foreach (self::PROJECTS as list($value1, $value2, $value3)) {
             $project = new Projects();
-            $project->setUrl($v1);
-            $project->setDescription($v2);
-            $tag = $this->getReference('tag_' . $v3);
+            $project->setUrl($value1);
+            $project->setDescription($value2);
+            $tag = $this->getReference('tag_' . $value3);
             $project->addTag($tag);
             $manager->persist($project);
         }
