@@ -5,7 +5,7 @@
 
 {% block body %}
 	<section class="qui-suis-je" aria-label="Qui-suis-je" id="qui-suis-je">
-		<h1 class="text-center bg-secondary text-primary m-auto p-1">
+		<h1 class="text-center bg-secondary text-primary m-auto p-1 mt-5">
 			Qui-suis-je
 		</h1>
 
@@ -18,4 +18,21 @@
 				<p class="text-primary bg-secondary">{{ object.content }}</P>
 			</div>
 		{% endfor %}
-	{% endblock %}
+	</section>
+
+	<section class="project d-flex flex-column align-items-center" aria-label="Project" id="project">
+		{% for project in projects %}
+			<div class="description">
+				<p class="text-primary bg-secondary mt-3">{{ project.description }}</P>
+			</div>
+			{% for tag in project.tags %}
+				<p class="text-secondary bg-primary mt-3">{{ tag.language }}</p>
+			{% endfor %}
+
+			<iframe class="mb-5" src="{{ project.url }}" width="75%" height="500"></iframe>
+			<a class="text-primary bg-secondary mb-5" href="{{ project.url }}">
+				Lien du déploiement
+			</a>
+		{% endfor %}
+	</section>
+{% endblock %}
