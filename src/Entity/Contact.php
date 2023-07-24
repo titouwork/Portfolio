@@ -36,9 +36,9 @@ class Contact
         return $this->name;
     }
 
-    public function setName(string $Name): self
+    public function setName(string $name): self
     {
-        $this->name = $Name;
+        $this->name = $name;
 
         return $this;
     }
