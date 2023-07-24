@@ -22,7 +22,7 @@ class Projects
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: Tags::class, mappedBy: 'projects_tags')]
+    #[ORM\ManyToMany(targetEntity: Tags::class, mappedBy: 'projectsTags')]
     private Collection $tags;
 
     public function __construct()
