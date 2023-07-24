@@ -15,18 +15,18 @@ class ContactType extends AbstractType
         $builder
             ->add('name', null, [
                 'attr' => [
-                    'class'=>'form-control'
+                    'class' => 'form-control'
                 ],
             ])
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'class'=>'form-control'
+                    'class' => 'form-control'
                 ],
             ])
             ->add('object', null, [
-                'label'=> 'Objet de la demande',
+                'label' => 'Objet de la demande',
                 'attr' => [
-                    'class'=>'form-control'
+                    'class' => 'form-control'
                 ],
             ]);
     }

@@ -17,15 +17,14 @@ class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
     public function index(
-    ContentRepository $contentRepo, 
-    ProjectsRepository $projectsRepo,
-    ContactRepository $contactRepository,
-    Request $request
-    ): Response
-    {
-        $contact= new Contact();
+        ContentRepository $contentRepo,
+        ProjectsRepository $projectsRepo,
+        ContactRepository $contactRepository,
+        Request $request
+    ): Response {
+        $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
-        
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
