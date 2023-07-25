@@ -4,45 +4,84 @@
 {% endblock %}
 
 {% block body %}
+	<button id="pauseButton">Pause</button>
 	<section class="home" aria-label="Accueil" id="home">
-		<div class="title">
-		<h1 class="text-center bg-secondary text-primary m-auto p-5 mt-5"> Bienvenue sur mon Portfolio </h1>
-	</div>
-</section>
-<section class="qui-suis-je" aria-label="Qui-suis-je" id="qui-suis-je">
-	<h1 class="text-center bg-secondary text-primary m-auto p-1 mt-5">
-		Qui-suis-je
-	</h1>
+		<div class="title d-flex justify-content-center w-75 m-auto">
+			<div class="waviy">
+				<span style="--i:1">B</span>
+				<span style="--i:2">I</span>
+				<span style="--i:3">E</span>
+				<span style="--i:4">N</span>
+				<span style="--i:5">V</span>
+				<span style="--i:6">E</span>
+				<span style="--i:7">N</span>
+				<span style="--i:8">U</span>
+				<span style="--i:9">E</span>
+				<span style="--i:10">-</span>
+				<span style="--i:11">S</span>
+				<span style="--i:12">U</span>
+				<span style="--i:13">R</span>
+				<span style="--i:14">-</span>
+				<span style="--i:15">M</span>
+				<span style="--i:16">O</span>
+				<span style="--i:17">N</span>
+				<span style="--i:18">-</span>
+				<span style="--i:19">P</span>
+				<span style="--i:20">O</span>
+				<span style="--i:21">R</span>
+				<span style="--i:22">T</span>
+				<span style="--i:23">F</span>
+				<span style="--i:24">O</span>
+				<span style="--i:25">L</span>
+				<span style="--i:26">I</span>
+				<span style="--i:27">O</span>
+			</div>
+		</div>
+	</section>
+	<section class="qui-suis-je" aria-label="Qui-suis-je" id="qui-suis-je">
+		<h1 class="text-center bg-secondary text-primary m-auto p-5 mt-5">
+			Qui-suis-je
+		</h1>
+		<div class="section2 d-flex m-5">
+			{% for object in content %}
+			<div class="information">
+				<div class="box">
+					<img class="photo" src="{{ asset(object.photo) }}" alt="Photo">
+					<div class="top"></div>
+					<div class="bottom"></div>
+					<div class="left"></div>
+					<div class="right"></div>
+				</div>
+				<div class="information-perso">
+					<p class="text-primary bg-secondary p-3">{{ object.information }}</P>
+				</div>
+				</div>
+				<div class="content">
+					<p class="text-primary bg-secondary p-3">{{ object.content }}</P>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
 
-	{% for object in content %}
-		<div class="information">
-			<img class="w-25" src="{{ asset(object.photo) }}" alt="Photo">
-			<p class="text-primary bg-secondary">{{ object.information }}</P>
-		</div>
-		<div class="content">
-			<p class="text-primary bg-secondary">{{ object.content }}</P>
-		</div>
-	{% endfor %}
-</section>
+	<section class="project d-flex flex-column align-items-center" aria-label="Project" id="project">
+		{% for project in projects %}
+			<div class="description">
+				<p class="text-primary bg-secondary mt-3">{{ project.description }}</P>
+			</div>
+			{% for tag in project.Tags %}
+				<p class="text-secondary bg-primary mt-3">{{ tag.language }}</p>
+			{% endfor %}
 
-<section class="project d-flex flex-column align-items-center" aria-label="Project" id="project">
-	{% for project in projects %}
-		<div class="description">
-			<p class="text-primary bg-secondary mt-3">{{ project.description }}</P>
-		</div>
-		{% for tag in project.Tags %}
-			<p class="text-secondary bg-primary mt-3">{{ tag.language }}</p>
+			<iframe class="mb-5" src="{{ project.url }}" width="75%" height="500"></iframe>
+			<a class="text-primary bg-secondary mb-5" href="{{ project.url }}">
+				Lien du déploiement
+			</a>
 		{% endfor %}
-
-		<iframe class="mb-5" src="{{ project.url }}" width="75%" height="500"></iframe>
-		<a class="text-primary bg-secondary mb-5" href="{{ project.url }}">
-			Lien du déploiement
-		</a>
-	{% endfor %}
-</section>
-<section class="contact d-flex flex-column align-items-center bg-secondary text-primary" aria-label="Contact" id="contact">
-	{{ form_start(contactForm) }}
-	{{ form_widget(contactForm) }}
-	<button type="submit">Envoyer</button>
-	{{ form_end(contactForm) }}
-</section>{% endblock %}
+	</section>
+	<section class="contact d-flex flex-column align-items-center bg-secondary text-primary" aria-label="Contact" id="contact">
+		{{ form_start(contactForm) }}
+		{{ form_widget(contactForm) }}
+		<button type="submit">Envoyer</button>
+		{{ form_end(contactForm) }}
+	</section>
+{% endblock %}
