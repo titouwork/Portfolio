@@ -37,6 +37,24 @@
 				<span style="--i:27">O</span>
 			</div>
 		</div>
+		<form class="game" method="post">
+			{% if errors %}
+				{% for error in errors %}
+					<p class="errors bg-danger bg-opacity-50 p-2 rounded-3 text-center">
+						<i class="fa-solid fa-triangle-exclamation me-2"></i>
+						{{ error }}</p>
+				{% endfor %}
+			{% endif %}
+			<label for="value" class="text-primary">Je suis un nombre à trois chiffres.
+								Mon premier chiffre est un carré parfait.
+								Mon deuxième chiffre est un nombre premier.
+								Mon troisième chiffre est la somme des deux premiers chiffres.
+								La somme de mes chiffres est égale à 15.</label>
+			<div class="réponse d-flex mt-3">
+			<input type="text" id="value" name="value" placeholder="réponse" class="form-control" required>
+			<button type="submit" class="bg-primary text-secondary">Essayer</button>
+			</div>
+		</form>
 	</section>
 	<section class="qui-suis-je" aria-label="Qui-suis-je" id="qui-suis-je">
 		<h1 class="text-center bg-secondary text-primary m-auto p-5 mt-5">
@@ -44,17 +62,17 @@
 		</h1>
 		<div class="section2 d-flex m-5">
 			{% for object in content %}
-			<div class="information">
-				<div class="box">
-					<img class="photo" src="{{ asset(object.photo) }}" alt="Photo">
-					<div class="top"></div>
-					<div class="bottom"></div>
-					<div class="left"></div>
-					<div class="right"></div>
-				</div>
-				<div class="information-perso">
-					<p class="text-primary bg-secondary p-3">{{ object.information }}</P>
-				</div>
+				<div class="information">
+					<div class="box">
+						<img class="photo" src="{{ asset(object.photo) }}" alt="Photo">
+						<div class="top"></div>
+						<div class="bottom"></div>
+						<div class="left"></div>
+						<div class="right"></div>
+					</div>
+					<div class="information-perso">
+						<p class="text-primary bg-secondary p-3">{{ object.information }}</P>
+					</div>
 				</div>
 				<div class="content">
 					<p class="text-primary bg-secondary p-3">{{ object.content }}</P>
@@ -65,14 +83,15 @@
 
 	<section class="project d-flex flex-column align-items-center" aria-label="Project" id="project">
 		{% for project in projects %}
+			{% for tag in project.Tags %}
+				<section class="{{ tag.language }}" aria-label="{{ tag.language }}" id="{{ tag.language }}">
+					<p class="text-secondary bg-primary mt-3">{{ tag.language }}</p>
+				</section>
+			{% endfor %}
 			<div class="description">
 				<p class="text-primary bg-secondary mt-3">{{ project.description }}</P>
 			</div>
-			{% for tag in project.Tags %}
-				<p class="text-secondary bg-primary mt-3">{{ tag.language }}</p>
-			{% endfor %}
-
-			<iframe class="mb-5" src="{{ project.url }}" width="75%" height="500"></iframe>
+			<iframe class="mb-5" src="{{ project.url }}" width="85%" height="640"></iframe>
 			<a class="text-primary bg-secondary mb-5" href="{{ project.url }}">
 				Lien du déploiement
 			</a>

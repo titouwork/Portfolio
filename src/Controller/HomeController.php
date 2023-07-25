@@ -22,6 +22,23 @@ class HomeController extends AbstractController
         ContactRepository $contactRepository,
         Request $request
     ): Response {
+        $errors = [];
+        if ($request->getMethod() === 'POST') {
+            $quizz = $request->request->all();
+            $values = array_values($quizz);
+            $trueValue = reset($values);
+
+            if (strlen($trueValue) !== 3 || is_numeric($trueValue) === false) {
+                $errors[] = 'Veuillez saisir un nombre à 3 chiffres.';
+            }
+            if (empty($errors)) {
+                if ($trueValue === "841") {
+                    return $this->redirectToRoute('app_validation');
+                } else {
+                    $errors[] = 'Faux !';
+                }
+            }
+        }
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
 
@@ -36,6 +53,7 @@ class HomeController extends AbstractController
             'content' => $contentRepo->findAll(),
             'projects' => $projectsRepo->findAll(),
             'contactForm' => $form->createView(),
+            'errors' => $errors,
         ]);
     }
 }

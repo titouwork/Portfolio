@@ -1,0 +1,9 @@
+<div{{attributes}}>
+	<ul class="dropdown-menu">
+		{% for tag in this.tags %}
+			<li>
+				<a class="dropdown-item text-primary" href="/#{{ tag.language }}">{{ tag.language }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+</div>
